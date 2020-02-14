@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- dubbo应用的名称-->
+    <dubbo:application name="dubbo_provider"/>
+    <!-- 服务注册中新的地址-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!--配置dubbo的协议 （dubbo协议默认端口20880）-->
+    <dubbo:protocol name="dubbo" port="20881"></dubbo:protocol>
+
+    <!--指定暴露的服务接口及实例-->
+    <!--    <dubbo:service interface="com.itheima.service.UserService" ref="userSerivce" protocol="dubbo" />-->
+    <!--配置业务类实例-->
+    <!--    <bean id="userSerivce" class="com.itheima.service.impl.UserServiceImpl"/>-->
+
+    <!--使用dubbo的组件扫描（注解的配置）  在service的实现类上添加@service，注意这个注解是dubbo包内的-->
+    <dubbo:annotation package="com.itheima.service"/>
+
+    <!--  调用超时时间设置为10秒钟  -->
+    <dubbo:provider timeout="10000"></dubbo:provider>
+</beans>

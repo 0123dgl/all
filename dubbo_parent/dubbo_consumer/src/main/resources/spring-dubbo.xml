@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-
     <!-- dubbo基本配置-->
     <dubbo:application name="dubbo_consumer"/>
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
@@ -13,10 +12,10 @@
     <!--使用dubbo的组件扫描（注解的配置）  @Reference //dubbo的订阅注解，替代了上面的注入  放置在controller类的service属性上-->
     <dubbo:annotation package="com.itheima"/>
 
-
-    <!--启动时不检查，即服务提供者没有启动，服务消费者启动的时候也不会报错-->
-    <dubbo:consumer check="false"></dubbo:consumer>
-
     <!--超时时间为10秒钟-->
     <dubbo:consumer timeout="10000"></dubbo:consumer>
+
+
+    <!--配置在服务消费者一方:如果不配置默认check值为true。  启动时不检查，即服务提供者没有启动，服务消费者启动的时候也不会报错-->
+    <dubbo:consumer check="false"></dubbo:consumer>
 </beans>

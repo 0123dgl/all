@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 
     //@Autowired
-    @Reference //dubbo的订阅注解，替代了上面的注入
+    //dubbo的订阅注解，替代了上面的注入
+    @Reference(loadbalance = "roundrobin")
     UserService userService;
+
     @RequestMapping("/findById")
-    public User findById(Integer id){
+    public User findById(Integer id) {
         User user = userService.findById(id);
         return user;
     }

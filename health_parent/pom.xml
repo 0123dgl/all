@@ -12,8 +12,11 @@
         <module>health_pojo</module>
         <module>health_dao</module>
         <module>health_interface</module>
+        <module>health_quartz-jobs</module>
+
         <module>health_service</module>
         <module>health_web</module>
+        <module>healthmobile_web</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -37,6 +40,7 @@
         <poi.version>3.14</poi.version>
         <jedis.version>2.9.0</jedis.version>
         <quartz.version>2.2.1</quartz.version>
+        <freemarker>2.3.23</freemarker>
     </properties>
     <!-- 依赖管理标签  必须加 -->
     <dependencyManagement>
@@ -246,8 +250,29 @@
                 <artifactId>xml-apis</artifactId>
                 <version>1.4.01</version>
             </dependency>
+
+            <!--阿里云服务器短信平台-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>3.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--    freemake的包  页面静态化技术   -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
